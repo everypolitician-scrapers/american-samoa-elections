@@ -29,6 +29,7 @@ def scrape_list(url)
 
     data = { 
       name: tds[0].text,
+      wikiname: tds[0].xpath('.//a[not(@class="new")]/@title').text.strip,
       area_id: current_district.first,
       area: current_district.last,
       party: "Independent",
