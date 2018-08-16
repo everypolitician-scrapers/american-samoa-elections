@@ -17,7 +17,7 @@ def scrape_list(url)
   noko = noko_for(url)
 
   current_district = ''
-  noko.xpath('//h3[span[@id="Fono"]]/following-sibling::table[1]/tr[td]').each do |tr|
+  noko.xpath('//h3[span[@id="Fono"]]/following::table[1]//tr[td]').each do |tr|
     tds = tr.css('td')
     current_district = tds.shift.text.tidy.split(/\s*[-–]\s*/, 2) if tds.count == 5
     next unless tds.last.text.include? 'Elected'
